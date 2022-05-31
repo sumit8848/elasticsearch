@@ -41,7 +41,7 @@ npm install
 Run the following command, filling in the variables below with your own Elasticsearch credentials and host.
 
 ```
-ELASTICSEARCH_HOST=https://{user}:{password}@{elasticsearch_url} npm start
+REACT_APP_ELASTICSEARCH_HOST=https://{user}:{password}@{elasticsearch_url} npm start
 ```
 
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -58,4 +58,4 @@ This project is meant to be deployed to Netlify.
 
 A `netlify.toml` file is included with all of the configuration you'll need to deploy it to Netlify.
 
-You'll additionally need to configure `ELASTICSEARCH_HOST` as an environment variable.
+You'll additionally need to configure `REACT_APP_ELASTICSEARCH_HOST` as an environment variable.

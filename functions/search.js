@@ -13,10 +13,10 @@ const httpsAgent = new https.Agent({
 const httpAgent = new http.Agent();
 
 exports.handler = function(event, context, callback) {
-  const host = process.env.ELASTICSEARCH_HOST;
+  const host = process.env.REACT_APP_ELASTICSEARCH_HOST;
   const agent = host.startsWith("http:") ? httpAgent : httpsAgent;
 
-  fetch(`${host}/national-parks/_search`, {
+  fetch(`${host}/pdf_metadata_v1/_search`, {
     method: "POST",
     headers: { "content-type": "application/json" },
     body: event.body,

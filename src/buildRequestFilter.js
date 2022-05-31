@@ -15,19 +15,19 @@ function getTermFilter(filter) {
   if (filter.type === "any") {
     return {
       bool: {
-        should: filter.values.map(filterValue => ({
-          term: getTermFilterValue(filter.field, filterValue)
+        should: filter.values?.map((filterValue) => ({
+          term: getTermFilterValue(filter.field, filterValue),
         })),
-        minimum_should_match: 1
-      }
+        minimum_should_match: 1,
+      },
     };
   } else if (filter.type === "all") {
     return {
       bool: {
-        filter: filter.values.map(filterValue => ({
-          term: getTermFilterValue(filter.field, filterValue)
-        }))
-      }
+        filter: filter.values?.map((filterValue) => ({
+          term: getTermFilterValue(filter.field, filterValue),
+        })),
+      },
     };
   }
 }
@@ -36,29 +36,29 @@ function getRangeFilter(filter) {
   if (filter.type === "any") {
     return {
       bool: {
-        should: filter.values.map(filterValue => ({
+        should: filter.values?.map((filterValue) => ({
           range: {
             [filter.field]: {
               ...(filterValue.to && { lt: filterValue.to }),
-              ...(filterValue.to && { gt: filterValue.from })
-            }
-          }
+              ...(filterValue.to && { gt: filterValue.from }),
+            },
+          },
         })),
-        minimum_should_match: 1
-      }
+        minimum_should_match: 1,
+      },
     };
   } else if (filter.type === "all") {
     return {
       bool: {
-        filter: filter.values.map(filterValue => ({
+        filter: filter.values?.map((filterValue) => ({
           range: {
             [filter.field]: {
               ...(filterValue.to && { lt: filterValue.to }),
-              ...(filterValue.to && { gt: filterValue.from })
-            }
-          }
-        }))
-      }
+              ...(filterValue.to && { gt: filterValue.from }),
+            },
+          },
+        })),
+      },
     };
   }
 }
